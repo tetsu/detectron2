@@ -5,6 +5,7 @@ inference_test_output
 
 
 *.jpg
+!image.jpg
 *.png
 *.txt
 *.mp4
