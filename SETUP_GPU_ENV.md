@@ -1,4 +1,4 @@
-## Set up Detectron2
+## Set up Detectron2 for GPU environment
 
 1. Conda Environment
    ```
@@ -31,14 +31,14 @@
    youtube-dl https://www.youtube.com/watch?v=rIh1iNxVGIc
    ```
 
-1. Test demo
+1. Detectron2 Test
    ```
    python demo/demo.py --config-file configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml \
      --video-input {downloaded video file name} \
      --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
    ```
 
-## Test DensePose
+## DensePose
 
 1. Move to DensePose folder
    ```
@@ -65,4 +65,17 @@
 1. Dump images in "images" folder into a pickle file
    ```
    python apply_net.py dump configs/densepose_rcnn_R_50_FPN_s1x.yaml model_final_dd99d2.pkl images --output dump.pkl -v
+   ```
+
+
+## Video File Management
+
+1. Splitting a video file into jpg images
+   ```
+   ffmpeg -i input.mp4 images/%04d.jpg -hide_banner
+   ```
+
+1. Creating a video file
+   ```
+   ffmpeg -framerate 30 -i result_images/output.%4d.png -y output.mp4
    ```
