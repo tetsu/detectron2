@@ -105,6 +105,7 @@ class InferenceAction(Action):
                 for fname in os.listdir(input_spec)
                 if os.path.isfile(os.path.join(input_spec, fname))
             ]
+            file_list.sort())
         elif os.path.isfile(input_spec):
             file_list = [input_spec]
         else:

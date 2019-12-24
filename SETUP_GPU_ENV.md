@@ -57,6 +57,11 @@
    python apply_net.py show configs/densepose_rcnn_R_50_FPN_s1x.yaml model_final_dd99d2.pkl image.jpg dp_contour,dp_segm --output image_densepose_contour.png
    ```
 
+1. Run ApplyNet to visualize DensePose result on multiple images
+   ```
+   python apply_net.py show configs/densepose_rcnn_R_50_FPN_s1x.yaml model_final_dd99d2.pkl kill03c dp_contour,bbox --output kill03c_result/kill03c.png
+   ```
+
 1. Dump images in "images" folder into a pickle file
    ```
    python apply_net.py dump configs/densepose_rcnn_R_50_FPN_s1x.yaml model_final_dd99d2.pkl images --output dump.pkl -v
