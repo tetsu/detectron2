@@ -34,7 +34,7 @@ class DatasetEvaluator:
 
         Args:
             input: the input that's used to call the model.
-            output: the return value of `model(output)`
+            output: the return value of `model(input)`
         """
         pass
 
@@ -72,7 +72,7 @@ class DatasetEvaluators(DatasetEvaluator):
         results = OrderedDict()
         for evaluator in self._evaluators:
             result = evaluator.evaluate()
-            if is_main_process():
+            if is_main_process() and result is not None:
                 for k, v in result.items():
                     assert (
                         k not in results
@@ -84,6 +84,7 @@ class DatasetEvaluators(DatasetEvaluator):
 def inference_on_dataset(model, data_loader, evaluator):
     """
     Run model on the data_loader and evaluate the metrics with evaluator.
+    Also benchmark the inference speed of `model.forward` accurately.
     The model will be used in eval mode.
 
     Args:
@@ -94,9 +95,8 @@ def inference_on_dataset(model, data_loader, evaluator):
             wrap the given model and override its behavior of `.eval()` and `.train()`.
         data_loader: an iterable object with a length.
             The elements it generates will be the inputs to the model.
-        evaluator (DatasetEvaluator): the evaluator to run. Use
-            :class:`DatasetEvaluators([])` if you only want to benchmark, but
-            don't want to do any evaluation.
+        evaluator (DatasetEvaluator): the evaluator to run. Use `None` if you only want
+            to benchmark, but don't want to do any evaluation.
 
     Returns:
         The return value of `evaluator.evaluate()`
@@ -106,6 +106,9 @@ def inference_on_dataset(model, data_loader, evaluator):
     logger.info("Start inference on {} images".format(len(data_loader)))
 
     total = len(data_loader)  # inference data loader must have a fixed length
+    if evaluator is None:
+        # create a no-op evaluator
+        evaluator = DatasetEvaluators([])
     evaluator.reset()
 
     num_warmup = min(5, total - 1)
@@ -124,12 +127,11 @@ def inference_on_dataset(model, data_loader, evaluator):
             total_compute_time += time.perf_counter() - start_compute_time
             evaluator.process(inputs, outputs)
 
-            if idx >= num_warmup * 2:
-                duration = time.perf_counter() - start_time
-                seconds_per_img = total_compute_time / (idx + 1 - num_warmup)
-                eta = datetime.timedelta(
-                    seconds=int(seconds_per_img * (total - num_warmup) - duration)
-                )
+            iters_after_start = idx + 1 - num_warmup * int(idx >= num_warmup)
+            seconds_per_img = total_compute_time / iters_after_start
+            if idx >= num_warmup * 2 or seconds_per_img > 5:
+                total_seconds_per_img = (time.perf_counter() - start_time) / iters_after_start
+                eta = datetime.timedelta(seconds=int(total_seconds_per_img * (total - idx - 1)))
                 log_every_n_seconds(
                     logging.INFO,
                     "Inference done {}/{}. {:.4f} s / img. ETA={}".format(
