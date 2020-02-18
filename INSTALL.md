@@ -8,7 +8,7 @@ also installs detectron2 with a few simple commands.
 ### Requirements
 - Linux or macOS
 - Python >= 3.6
-- PyTorch 1.3
+- PyTorch >= 1.3
     ex. conda install pytorch=1.3.1 torchvision cudatoolkit=10.1 cudnn -c pytorch
 - [torchvision](https://github.com/pytorch/vision/) that matches the PyTorch installation.
 	You can install them together at [pytorch.org](https://pytorch.org) to make sure of this.
