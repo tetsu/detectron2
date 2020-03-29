@@ -10,6 +10,8 @@ inference_test_output
 *.txt
 *.mp4
 *.mkv
+*.json
+*.diff
 
 # compilation and distribution
 __pycache__
@@ -36,10 +38,12 @@ wheels/
 *.swp
 *~
 
-# Pycharm editor settings
+# editor settings
 .idea
+.vscode
 
 # project dirs
 /detectron2/model_zoo/configs
 /datasets
+/projects/*/datasets
 /models
