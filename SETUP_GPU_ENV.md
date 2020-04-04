@@ -10,9 +10,15 @@
    conda activate detectron2
    ```
 
-1. Install libraries with GPU dependencies
+1. Install libraries with GPU dependencies.
+
+   For cuda 10.0
    ```
    conda install pytorch=1.3 torchvision cudatoolkit=10.0 -c pytorch
+   ```
+   For cuda 10.1
+   ```
+   conda install pytorch=1.4 torchvision cudatoolkit=10.1 -c pytorch
    ```
 
 1. Install OpenCV
