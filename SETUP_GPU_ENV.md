@@ -32,11 +32,10 @@
    ```
 
 1. Detectron2 Test
-   ```
-   python demo/demo.py --config-file configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml \
-     --video-input {downloaded video file name} \
-     --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
-   ```
+   
+   Find config file in the [configs](./configs/) directory.
+   
+   Find weight path in the [model_zoo.py](./detectron2/model_zoo/model_zoo.py) file.
 
    mask example
    ```
@@ -45,20 +44,13 @@
    --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
    ```
 
-   keypoint example
+   keypoint detection example
    ```
    python demo/demo.py --config-file configs/COCO-Keypoints/keypoint_rcnn_R_101_FPN_3x.yaml \
    --video-input koi01.mkv \
-   --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
+   --opts MODEL.WEIGHTS detectron2://COCO-Keypoints/keypoint_rcnn_R_101_FPN_3x/138363331/model_final_997cc7.pkl
    ```
 
-   ```
-   python demo/demo.py --config-file configs/COCO-Detection/faster_rcnn_R_50_C4_3x.yaml \
-   --video-input koi01.mkv \
-   --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
-   ```
-
-   
 
 ## DensePose
 
