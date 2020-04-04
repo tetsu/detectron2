@@ -38,6 +38,28 @@
      --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
    ```
 
+   mask example
+   ```
+   python demo/demo.py --config-file configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml \
+   --video-input koi01.mkv \
+   --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
+   ```
+
+   keypoint example
+   ```
+   python demo/demo.py --config-file configs/COCO-Keypoints/keypoint_rcnn_R_101_FPN_3x.yaml \
+   --video-input koi01.mkv \
+   --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
+   ```
+
+   ```
+   python demo/demo.py --config-file configs/COCO-Detection/faster_rcnn_R_50_C4_3x.yaml \
+   --video-input koi01.mkv \
+   --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
+   ```
+
+   
+
 ## DensePose
 
 1. Move to DensePose folder
