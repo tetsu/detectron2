@@ -2,7 +2,7 @@
 
 1. Conda Environment
    ```
-   conda create -n detectron2 python=3.6
+   conda create -n detectron2 python=3.7
    ```
 
 1. Activate Anaconda environment
