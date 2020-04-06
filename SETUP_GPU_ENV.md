@@ -26,6 +26,11 @@
    conda install -c conda-forge opencv=4.1.0
    ```
 
+1. Install cocoapi
+   ```
+   pip install cython; pip install -U 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
+   ```
+
 1. Build Detectron2 and install it to your python environment
    ```
    python setup.py build develop
