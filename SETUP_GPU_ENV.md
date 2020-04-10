@@ -31,6 +31,11 @@
    pip install cython; pip install -U 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
    ```
 
+1. Install DensePose dependencies
+   ```
+   conda install scipy
+   ```
+
 1. Build Detectron2 and install it to your python environment
    ```
    python setup.py build develop

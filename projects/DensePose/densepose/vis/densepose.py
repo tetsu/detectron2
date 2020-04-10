@@ -18,6 +18,11 @@ class DensePoseResultsVisualizer(object):
             bbox_xywh = densepose_result.boxes_xywh[i]
             self.visualize_iuv_arr(context, iuv_arr, bbox_xywh)
         image_bgr = self.context_to_image_bgr(context)
+        
+        # release pyplot memory after saving each image
+        import matplotlib.pyplot as plt
+        plt.close()
+        
         return image_bgr
 
 

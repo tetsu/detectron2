@@ -1,0 +1,4 @@
+*.pkl
+split_images/
+inferred_images/
+inferred_videos/
