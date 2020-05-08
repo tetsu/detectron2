@@ -4,7 +4,7 @@ import numpy as np
 from typing import Iterable, Optional, Tuple
 import cv2
 
-from ..structures import DensePoseDataRelative, DensePoseOutput, DensePoseResult
+from ..data.structures import DensePoseDataRelative, DensePoseOutput, DensePoseResult
 from .base import Boxes, Image, MatrixVisualizer, PointsVisualizer
 
 
@@ -359,21 +359,25 @@ class DensePoseOutputsFineSegmentationVisualizer(object):
         U = densepose_output.U
         V = densepose_output.V
         N = S.size(0)
-        assert N == I.size(0), (
-            "densepose outputs S {} and I {}"
-            " should have equal first dim size".format(S.size(), I.size())
+        assert N == I.size(
+            0
+        ), "densepose outputs S {} and I {}" " should have equal first dim size".format(
+            S.size(), I.size()
         )
-        assert N == U.size(0), (
-            "densepose outputs S {} and U {}"
-            " should have equal first dim size".format(S.size(), U.size())
+        assert N == U.size(
+            0
+        ), "densepose outputs S {} and U {}" " should have equal first dim size".format(
+            S.size(), U.size()
         )
-        assert N == V.size(0), (
-            "densepose outputs S {} and V {}"
-            " should have equal first dim size".format(S.size(), V.size())
+        assert N == V.size(
+            0
+        ), "densepose outputs S {} and V {}" " should have equal first dim size".format(
+            S.size(), V.size()
         )
-        assert N == len(bboxes_xywh), (
-            "number of bounding boxes {}"
-            " should be equal to first dim size of outputs {}".format(len(bboxes_xywh), N)
+        assert N == len(
+            bboxes_xywh
+        ), "number of bounding boxes {}" " should be equal to first dim size of outputs {}".format(
+            len(bboxes_xywh), N
         )
         for n in range(N):
             Sn = S[n].argmax(dim=0)
@@ -406,21 +410,25 @@ class DensePoseOutputsUVisualizer(object):
         U = densepose_output.U
         V = densepose_output.V
         N = S.size(0)
-        assert N == I.size(0), (
-            "densepose outputs S {} and I {}"
-            " should have equal first dim size".format(S.size(), I.size())
+        assert N == I.size(
+            0
+        ), "densepose outputs S {} and I {}" " should have equal first dim size".format(
+            S.size(), I.size()
         )
-        assert N == U.size(0), (
-            "densepose outputs S {} and U {}"
-            " should have equal first dim size".format(S.size(), U.size())
+        assert N == U.size(
+            0
+        ), "densepose outputs S {} and U {}" " should have equal first dim size".format(
+            S.size(), U.size()
         )
-        assert N == V.size(0), (
-            "densepose outputs S {} and V {}"
-            " should have equal first dim size".format(S.size(), V.size())
+        assert N == V.size(
+            0
+        ), "densepose outputs S {} and V {}" " should have equal first dim size".format(
+            S.size(), V.size()
         )
-        assert N == len(bboxes_xywh), (
-            "number of bounding boxes {}"
-            " should be equal to first dim size of outputs {}".format(len(bboxes_xywh), N)
+        assert N == len(
+            bboxes_xywh
+        ), "number of bounding boxes {}" " should be equal to first dim size of outputs {}".format(
+            len(bboxes_xywh), N
         )
         for n in range(N):
             Sn = S[n].argmax(dim=0)
@@ -457,21 +465,25 @@ class DensePoseOutputsVVisualizer(object):
         U = densepose_output.U
         V = densepose_output.V
         N = S.size(0)
-        assert N == I.size(0), (
-            "densepose outputs S {} and I {}"
-            " should have equal first dim size".format(S.size(), I.size())
+        assert N == I.size(
+            0
+        ), "densepose outputs S {} and I {}" " should have equal first dim size".format(
+            S.size(), I.size()
         )
-        assert N == U.size(0), (
-            "densepose outputs S {} and U {}"
-            " should have equal first dim size".format(S.size(), U.size())
+        assert N == U.size(
+            0
+        ), "densepose outputs S {} and U {}" " should have equal first dim size".format(
+            S.size(), U.size()
         )
-        assert N == V.size(0), (
-            "densepose outputs S {} and V {}"
-            " should have equal first dim size".format(S.size(), V.size())
+        assert N == V.size(
+            0
+        ), "densepose outputs S {} and V {}" " should have equal first dim size".format(
+            S.size(), V.size()
         )
-        assert N == len(bboxes_xywh), (
-            "number of bounding boxes {}"
-            " should be equal to first dim size of outputs {}".format(len(bboxes_xywh), N)
+        assert N == len(
+            bboxes_xywh
+        ), "number of bounding boxes {}" " should be equal to first dim size of outputs {}".format(
+            len(bboxes_xywh), N
         )
         for n in range(N):
             Sn = S[n].argmax(dim=0)
