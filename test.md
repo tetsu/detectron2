@@ -9,7 +9,8 @@ python demo/demo.py --config-file configs/COCO-InstanceSegmentation/mask_rcnn_R_
 
 python demo/demo.py --config-file configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml \
   --video-input iOS.MP4 \
-  --output ./output/iOS \
+  --output ./output/iOS-03.mkv \
+  --confidence-threshold 0.9 \
   --opts MODEL.WEIGHTS detectron2://COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
 ```
 
